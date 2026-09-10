@@ -9,7 +9,6 @@ const navItems = [
   { label: 'Vision', href: '#vision' },
   { label: 'How It Works', href: '#how-it-works' },
   { label: 'Features', href: '#features' },
-  { label: 'Founder', href: '#founder' },
   { label: 'Contact', href: '#contact' },
 ];
 
