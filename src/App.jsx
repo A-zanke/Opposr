@@ -11,7 +11,7 @@ import LiveExperience from './components/LiveExperience';
 import ExploreCategories from './components/ExploreCategories';
 import WhyOpposr from './components/WhyOpposr';
 import AppPreview from './components/AppPreview';
-import Founder from './components/Founder';
+
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 
@@ -101,9 +101,6 @@ export default function App() {
 
             {/* 11. APP PREVIEW */}
             <AppPreview />
-
-            {/* 12. FOUNDER */}
-            <Founder />
 
 
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Globe, Mail } from 'lucide-react';
-import { TwitterIcon, LinkedinIcon, GithubIcon } from './BrandIcons';
+import { TwitterIcon, LinkedinIcon, GithubIcon, InstagramIcon } from './BrandIcons';
 import { BRAND_CONFIG } from '../config';
 import logoImg from '../assets/logo.png';
 
@@ -18,55 +18,64 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative bg-brand-bg border-t border-white/5 py-12 md:py-16 overflow-hidden">
+    <footer className="relative bg-brand-bg border-t border-white/5 py-8 md:py-16 overflow-hidden">
       {/* Background ambient radial highlight */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[200px] bg-brand-blue/5 blur-[100px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[180px] bg-brand-blue/5 blur-[100px] rounded-full pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8 items-start text-left">
+        <div className="grid grid-cols-2 md:grid-cols-12 gap-6 md:gap-8 items-start text-left">
 
           {/* Column 1: Brand & Tagline & Direct Email */}
-          <div className="md:col-span-6 flex flex-col gap-4">
+          <div className="col-span-2 md:col-span-6 flex flex-col gap-2.5">
             <a href="#home" onClick={(e) => handleScrollTo(e, 'home')} className="flex items-center gap-3 self-start group">
-              <span className="text-xl font-bold tracking-widest font-display text-white transition-all group-hover:text-brand-cyan">
+              <span className="text-lg sm:text-xl font-bold tracking-widest font-display text-white transition-all group-hover:text-brand-cyan">
                 {BRAND_CONFIG.name}
               </span>
             </a>
-            <p className="text-sm text-white/50 font-sans max-w-sm leading-relaxed mt-1">
+            <p className="text-xs text-white/50 font-sans max-w-sm leading-relaxed">
               {BRAND_CONFIG.tagline}
             </p>
 
-            {/* Direct Connect Email */}
-            <div className="mt-2">
+            {/* Direct Connect Email + Instagram */}
+            <div className="mt-1 flex flex-wrap items-center gap-2">
               <a
                 href="mailto:shaikhsufiyan8261@gmail.com"
-                className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white/[0.03] border border-white/10 hover:border-brand-cyan/40 hover:bg-brand-cyan/5 text-xs text-white/80 hover:text-brand-cyan transition-all font-sans font-medium group"
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/[0.03] border border-white/10 hover:border-brand-cyan/40 hover:bg-brand-cyan/5 text-[11px] text-white/80 hover:text-brand-cyan transition-all font-sans font-medium group"
               >
-                <Mail size={14} className="text-brand-cyan group-hover:scale-110 transition-transform" />
+                <Mail size={13} className="text-brand-cyan group-hover:scale-110 transition-transform" />
                 <span>shaikhsufiyan8261@gmail.com</span>
+              </a>
+              <a
+                href="https://www.instagram.com/its.opposr?utm_source=qr&igsh=MWltMXRzdXUybGR1Yw=="
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/[0.03] border border-white/10 hover:border-pink-500/40 hover:bg-pink-500/5 text-[11px] text-white/80 hover:text-pink-400 transition-all font-sans font-medium group"
+                aria-label="Instagram"
+              >
+                <InstagramIcon className="w-3.5 h-3.5 text-pink-400 group-hover:scale-110 transition-transform" />
+                <span>@its.opposr</span>
               </a>
             </div>
           </div>
 
           {/* Column 2: Navigation Links */}
-          <div className="md:col-span-3 flex flex-col gap-4">
-            <h4 className="text-xs font-display font-bold text-white/40 uppercase tracking-widest">
+          <div className="col-span-1 md:col-span-3 flex flex-col gap-2">
+            <h4 className="text-[10px] font-display font-bold text-white/40 uppercase tracking-widest">
               Navigation
             </h4>
-            <div className="flex flex-col gap-2.5">
+            <div className="flex flex-col gap-1.5">
               {[
                 { label: 'Home', target: 'home' },
                 { label: 'Vision', target: 'vision' },
                 { label: 'How It Works', target: 'how-it-works' },
                 { label: 'Features', target: 'features' },
-                { label: 'Founder', target: 'founder' },
                 { label: 'Contact', target: 'contact' },
               ].map((link, idx) => (
                 <a
                   key={idx}
                   href={`#${link.target}`}
                   onClick={(e) => handleScrollTo(e, link.target)}
-                  className="text-xs text-white/60 hover:text-brand-cyan font-sans transition-colors duration-200"
+                  className="text-[11px] text-white/60 hover:text-brand-cyan font-sans transition-colors duration-200"
                 >
                   {link.label}
                 </a>
@@ -75,17 +84,17 @@ export default function Footer() {
           </div>
 
           {/* Column 3: Legal & Community */}
-          <div className="md:col-span-3 flex flex-col gap-4">
-            <h4 className="text-xs font-display font-bold text-white/40 uppercase tracking-widest">
+          <div className="col-span-1 md:col-span-3 flex flex-col gap-2">
+            <h4 className="text-[10px] font-display font-bold text-white/40 uppercase tracking-widest">
               Legal & Info
             </h4>
-            <div className="flex flex-col gap-2.5">
+            <div className="flex flex-col gap-1.5">
               {['Privacy Policy', 'Terms of Service', 'Community Guidelines', 'Beta Agreement'].map((link, idx) => (
                 <a
                   key={idx}
                   href="#"
                   onClick={(e) => e.preventDefault()}
-                  className="text-xs text-white/60 hover:text-brand-cyan font-sans transition-colors duration-200"
+                  className="text-[11px] text-white/60 hover:text-brand-cyan font-sans transition-colors duration-200"
                 >
                   {link}
                 </a>
@@ -95,13 +104,13 @@ export default function Footer() {
         </div>
 
         {/* Bottom Row */}
-        <div className="flex flex-col sm:flex-row justify-between items-center gap-6 border-t border-white/5 pt-10 mt-12">
-          <p className="text-xs text-white/30 font-sans tracking-wide">
+        <div className="flex flex-row justify-between items-center gap-4 border-t border-white/5 pt-5 mt-6">
+          <p className="text-[10px] text-white/30 font-sans tracking-wide">
             © {new Date().getFullYear()} {BRAND_CONFIG.name}. All rights reserved.
           </p>
 
           {/* Social Icons */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
             {[
               { icon: TwitterIcon, href: 'https://x.com', label: 'Twitter' },
               { icon: LinkedinIcon, href: 'https://linkedin.com', label: 'LinkedIn' },
@@ -118,7 +127,7 @@ export default function Footer() {
                   className="text-white/40 hover:text-brand-cyan transition-colors duration-300"
                   aria-label={social.label}
                 >
-                  <Icon size={16} />
+                  <Icon size={14} />
                 </a>
               );
             })}
@@ -126,5 +135,6 @@ export default function Footer() {
         </div>
       </div>
     </footer>
+
   );
 }

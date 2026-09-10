@@ -20,74 +20,112 @@ export default function AppPreview() {
   return (
     <section
       id="app-preview"
-      className="relative py-24 md:py-36 bg-brand-bg overflow-hidden flex flex-col justify-center"
+      className="relative py-14 sm:py-24 md:py-36 bg-brand-bg overflow-hidden flex flex-col justify-center"
     >
       <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none" />
       <div className="absolute w-[600px] h-[300px] bg-brand-blue/5 blur-[130px] bottom-0 left-1/4 pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+      {/* Animated top accent */}
+      <motion.div
+        initial={{ scaleX: 0 }}
+        whileInView={{ scaleX: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1.4 }}
+        className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-brand-cyan/30 to-transparent origin-left"
+      />
+
+      <div className="max-w-7xl mx-auto px-5 md:px-12 relative z-10 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-16 items-center">
 
           {/* Left Column: Heading Copy */}
-          <div className="lg:col-span-6 flex flex-col gap-6 text-left">
-            <span className="text-xs font-semibold tracking-widest text-brand-cyan uppercase font-sans">
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-6 flex flex-col gap-4 sm:gap-6 text-left"
+          >
+            <span className="text-[10px] sm:text-xs font-semibold tracking-widest text-brand-cyan uppercase font-sans">
               // DESIGN INTEGRITY
             </span>
 
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold tracking-tight text-white leading-[1.1]">
+            <h2 className="text-2xl sm:text-4xl md:text-5xl font-display font-extrabold tracking-tight text-white leading-[1.1]">
               Engineered For<br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-blue to-brand-cyan">
                 Frictionless Dialectics.
               </span>
             </h2>
 
-            <div className="w-16 h-[2px] bg-gradient-to-r from-brand-blue to-brand-cyan rounded-full mt-2" />
+            <div className="w-12 sm:w-16 h-[2px] bg-gradient-to-r from-brand-blue to-brand-cyan rounded-full" />
 
-            <p className="text-base sm:text-lg text-white/70 font-sans leading-relaxed">
+            <p className="text-sm sm:text-lg text-white/70 font-sans leading-relaxed">
               We did away with the clutter of traditional social timelines. The <strong>OPPOSR</strong> mobile application is built from the ground up for focused, real-time structured debates.
             </p>
 
-            <div className="flex flex-col gap-4 mt-4">
+            <div className="flex flex-col gap-2 sm:gap-4">
               {[
-                { title: 'Zero Interruptions', desc: 'A strict speech-turn protocol ensures speakers state arguments fully without interruptions.' },
-                { title: 'Peer Jury Panels', desc: 'Unbiased audience juries vote on logic and credibility, rather than emotional triggers.' },
-                { title: 'Verified Profiles', desc: 'No bots or anonymous trolls. Real people standing by real claims.' }
+                { title: 'Zero Interruptions', desc: 'Strict speech-turn protocol for clear logic.' },
+                { title: 'Peer Jury Panels', desc: 'Audience juries vote on logic & credibility.' },
+                { title: 'Verified Profiles', desc: 'Real people standing by real claims.' }
               ].map((item, idx) => (
-                <div key={idx} className="flex gap-4 items-start text-left p-4 rounded-xl border border-white/5 bg-white/[0.01]">
-                  <div className="w-8 h-8 rounded-lg bg-brand-blue/10 border border-brand-blue/20 flex items-center justify-center text-brand-cyan shrink-0">
-                    <Zap size={14} />
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: idx * 0.1 }}
+                  className="flex flex-row gap-3 sm:gap-4 items-start text-left p-3 sm:p-4 rounded-xl border border-white/5 bg-white/[0.01] hover:border-brand-cyan/20 transition-colors duration-300"
+                >
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-brand-blue/10 border border-brand-blue/20 flex items-center justify-center text-brand-cyan shrink-0">
+                    <Zap size={13} />
                   </div>
                   <div>
-                    <h4 className="text-sm font-display font-bold text-white/90">{item.title}</h4>
-                    <p className="text-xs text-white/50 mt-1 leading-relaxed">{item.desc}</p>
+                    <h4 className="text-xs sm:text-sm font-display font-bold text-white/90 leading-tight">{item.title}</h4>
+                    <p className="text-[10px] sm:text-xs text-white/50 mt-0.5 leading-relaxed">{item.desc}</p>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Column: 3D Smartphone Device Mockup */}
-          <div className="lg:col-span-6 flex flex-col items-center justify-center">
+          <motion.div
+            initial={{ opacity: 0, y: 50, scale: 0.95 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-6 flex flex-col items-center justify-center"
+          >
 
             {/* 3D Viewport container */}
-            <div className="relative [perspective:1200px] py-6">
+            <div className="relative [perspective:1200px] py-2 sm:py-6">
 
               {/* Radial Glow underneath the device */}
-              <div className="absolute top-[80%] left-1/2 -translate-x-1/2 w-48 h-12 bg-brand-cyan/20 blur-2xl rounded-full scale-125 z-0" />
+              <div className="absolute top-[80%] left-1/2 -translate-x-1/2 w-44 sm:w-56 h-12 sm:h-16 bg-gradient-to-r from-brand-blue/30 via-brand-cyan/30 to-brand-blue/30 blur-2xl rounded-full scale-125 z-0 animate-pulse" />
 
               {/* Phone Container */}
               <motion.div
+                initial={{ opacity: 0, y: 60, scale: 0.92, rotateX: 10 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1, rotateX: 4 }}
+                viewport={{ once: false, margin: "-50px" }}
                 animate={{
-                  rotateY: [-3, 3, -3],
-                  rotateX: [4, 8, 4],
+                  rotateY: [-4, 4, -4],
+                  rotateX: [3, 7, 3],
+                  translateY: [-6, 6, -6]
                 }}
                 transition={{
-                  duration: 8,
-                  repeat: Infinity,
-                  ease: "easeInOut"
+                  rotateY: { duration: 7, repeat: Infinity, ease: "easeInOut" },
+                  rotateX: { duration: 6, repeat: Infinity, ease: "easeInOut" },
+                  translateY: { duration: 5, repeat: Infinity, ease: "easeInOut" },
+                  opacity: { duration: 0.8 },
+                  y: { duration: 0.8 },
+                  scale: { duration: 0.8 }
                 }}
-                className="relative z-10 w-[300px] h-[610px] bg-[#0E0F14] border-[10px] border-[#1C1D24] rounded-[48px] shadow-2xl flex flex-col overflow-hidden"
+                className="relative z-10 w-[240px] xs:w-[270px] sm:w-[300px] h-[480px] xs:h-[530px] sm:h-[610px] bg-[#0E0F14] border-[6px] xs:border-[8px] sm:border-[10px] border-[#1C1D24] rounded-[36px] xs:rounded-[44px] sm:rounded-[48px] shadow-[0_0_40px_rgba(34,211,238,0.2)] flex flex-col overflow-hidden group hover:shadow-[0_0_60px_rgba(34,211,238,0.35)] transition-shadow duration-500"
               >
+
+
+
                 {/* Dynamic Island Screen Notch */}
                 <div className="absolute top-3 left-1/2 -translate-x-1/2 w-24 h-4 bg-black rounded-full z-40 border border-white/10 flex items-center justify-center">
                   <span className="w-1.5 h-1.5 rounded-full bg-slate-800 absolute right-3" />
@@ -363,7 +401,7 @@ export default function AppPreview() {
                 </div>
               </motion.div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
